@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Arena Draft</title>
+  <style>
+    
+    body {
+      margin-top: 50px;
+      margin-left: 120px;
+      margin-right: 120px;
+      background-color: #444654;
+      text-align: center;
+    }
+
+    button {
+      background-color: #008CBA;
+      border: none;
+      color: white; 
+      padding: 15px 32px;
+      text-align: center;
+      text-decoration: none;
+      display: inline-block;
+      font-size: 16px;
+      margin: 4px 2px;
+      cursor: pointer;
+      transition-duration: 0.4s;
+    }
+
+    button:hover {
+      background-color: #4CAF50; 
+      color: white;
+    }
+
+    .cards {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-around;
+      padding: 20px;
+    }
+
+    #hand {
+      justify-content: center;
+      margin-left: 350px;
+      margin-right: 350px;
+    }
+
+    #deck {
+      position: absolute;
+      width: 1367px;
+      height: 264px;
+      bottom: 33%;
+      left: 50%;
+      transform: translateX(-50%);
+    }
+
+    .cards img {
+      margin: 10px;
+      transition: transform 0.2s;
+    }
+
+    #hand img {
+      width: 120px;
+      height: auto;
+    }
+
+    #deck img {
+      width: 200px;
+      height: auto;
+    }
+
+    .cards img:hover {
+      transform: scale(1.1);
+    }
+
+    .cards div {
+      position: relative;
+      display: inline-block;
+    }
+
+    .cards .tooltip {
+      width: 120px;
+      font-family: Verdana, sans-serif;
+      font-size: 12px;
+      background-color: #555;
+      color: #fff;
+      padding: 5px 0;
+      border-radius: 6px;
+
+      position: absolute;
+      top: 100%;
+      left: 50%;
+      transform: translateX(-50%);
+
+    }
+
+    #hand .tooltip {
+
+      position: absolute;
+      z-index: 1;
+      top: 100%;
+      left: 50%;
+      margin-left: -60px;
+
+      visibility: hidden;
+      opacity: 0;
+    }
+
+    #hand div:hover .tooltip {
+      visibility: visible;
+      opacity: 1;
+    }
+
+    .cardContainer {
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .delButton {
+      position: absolute;
+      top: 350px;
+      left: 50%;
+      transform: translateX(-50%);
+
+      width: 150px;
+    }
+
+    .number-input {
+      width: 100px;
+      padding: 12px 20px;
+      margin: 8px 0;
+      box-sizing: border-box;
+      border: 2px solid #ccc;
+      border-radius: 4px;
+    }
+
+  </style>
+</head>
+
+<body>
+
+  <div id="start">
+    <label id="numCardsLabel">Number of Cards to Draft: </label>
+    <input id="numCards" type="number" value="12" min="1" max="12">
+    <br><button id="startDraft" onclick="startDraft()">Start Draft</button>
+  </div>
+
+  <section>
+    <div id="hand" class="cards"></div>
+  </section>
+
+  <section>
+    <div id="deck" class="cards">
+      <div id="card0" class="cardSpot"></div>
+      <div id="card1" class="cardSpot"></div>
+      <div id="card2" class="cardSpot"></div>
+    </div>
+    <div id="deckCode" style="display: none;">
+      <button id="copyButton">Copy to Clipboard</button>
+      <input type="text" id="deckCodeText" readonly />
+    </div>
+  </section>
+
+  <script src="/scripts/arenadraft.js"></script>
+    
+</body>
+</html>

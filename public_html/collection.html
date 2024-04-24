@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Card Collection</title>
+  <style>
+    
+    body {
+      margin: 120px;
+      background-color: #444654;
+    }
+
+    button {
+      background-color: #008CBA;
+      border: none;
+      color: white; 
+      padding: 15px 32px;
+      text-align: center;
+      text-decoration: none;
+      display: inline-block;
+      font-size: 16px;
+      margin: 4px 2px;
+      cursor: pointer;
+      transition-duration: 0.4s;
+    }
+
+    button:hover {
+      background-color: #4CAF50; 
+      color: white;
+    }
+
+    .cards {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-around;
+      padding: 20px;
+    }
+
+
+    .cards img {
+      width: 120px;
+      height: auto;
+      margin: 10px;
+      transition: transform 0.2s;
+    }
+
+    .collection img {
+      filter: grayscale(100%);
+    }
+
+    .cards img.selected {
+      filter: grayscale(0%);
+    }
+
+    .cards img:hover {
+      transform: scale(1.1);
+    }
+
+    .cards div {
+      position: relative;
+      display: inline-block;
+    }
+
+    .cards .tooltip {
+      visibility: hidden;
+      width: 120px;
+      font-family: Verdana, sans-serif;
+      font-size: 12px;
+      background-color: #555;
+      color: #fff;
+      text-align: center;
+      padding: 5px 0;
+      border-radius: 6px;
+
+      position: absolute;
+      z-index: 1;
+      top: 100%;
+      left: 50%;
+      margin-left: -60px;
+      
+      opacity: 0;
+      transition: opacity 0.3s;
+    }
+
+    .cards div:hover .tooltip {
+      visibility: visible;
+      opacity: 1;
+    }
+
+    .number-input {
+      width: 100px;
+      padding: 12px 20px;
+      margin: 8px 0;
+      box-sizing: border-box;
+      border: 2px solid #ccc;
+      border-radius: 4px;
+    }
+
+  </style>
+</head>
+
+<body>
+
+  <section>
+    <button onclick="toggleSeries('all')">Select all Cards</button>
+  </section>
+
+  <section>
+    <h2>Starter</h2>
+    <button onclick="toggleSeries('Starter')">Select all Starter Cards</button>
+    <div id="Starter" class="cards collection"></div>
+  </section>
+
+  <section>
+    <h2>Lvl 1-14</h2>
+    <button onclick="toggleSeries('Lvl 1-14')">Select all Lvl 1-14 Cards</button>
+    <div id="Lvl 1-14" class="cards collection"></div>
+  </section>
+
+  <section>
+    <h2>Pool 1</h2>
+    <button onclick="toggleSeries('Pool 1')">Select all Pool 1 Cards</button>
+    <div id="Pool 1" class="cards collection"></div>
+  </section>
+
+  <section>
+    <h2>Pool 2</h2>
+    <button onclick="toggleSeries('Pool 2')">Select all Pool 2 Cards</button>
+    <div id="Pool 2" class="cards collection"></div>
+  </section>
+
+  <section>
+    <h2>Pool 3</h2>
+    <button onclick="toggleSeries('Pool 3')">Select all Pool 3 Cards</button>
+    <div id="Pool 3" class="cards collection"></div>
+  </section>
+
+  <section>
+    <h2>Pool 4</h2>
+    <button onclick="toggleSeries('Pool 4')">Select all Pool 4 Cards</button>
+    <div id="Pool 4" class="cards collection"></div>
+  </section>
+
+  <section>
+    <h2>Pool 5</h2>
+    <button onclick="toggleSeries('Pool 5')">Select all Pool 5 Cards</button>
+    <div id="Pool 5" class="cards collection"></div>
+  </section>
+
+  <form id='deckForm' action='http://localhost:3000/snakedraft' method='post'>
+    <input type='hidden' id='deckInput' name='deck'>
+    <input class='number-input' id='deckSize' type='number' value='40'>
+    <button type='button' id='generateDeck'>Generate Deck</button>
+    <button type='submit'>Start Draft</button>
+  </form>
+
+  <div id="deck" class="cards"></div>
+
+  <script src="/scripts/collection.js"></script>
+    
+</body>
+</html>

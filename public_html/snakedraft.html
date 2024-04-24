@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Draft</title>
+  <style>
+
+    body {
+      margin: 30px;
+      background-color: #444654;
+      text-align: center;
+    }
+
+    button {
+      background-color: #008CBA;
+      border: none;
+      color: white;
+      padding: 15px 32px;
+      text-align: center;
+      text-decoration: none;
+      display: inline-block;
+      font-size: 16px;
+      margin: 4px 2px;
+      cursor: pointer;
+      transition-duration: 0.4s; 
+    }
+
+    button:hover {
+      background-color: #4CAF50;
+      color: white;
+    }
+
+    label {
+      color:white;
+    }
+
+    #currentPlayerDisplay {
+      font-size:24px;
+    }
+
+    .cards {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-around;
+      padding: 20px;
+    }
+
+    .cards div {
+      position: relative;
+      display: inline-block;
+    }
+
+    .cards img {
+      margin: 10px;
+      transition: transform 0.2s;
+    }
+
+    .cards img:hover {
+      transform: scale(1.1);
+    }
+
+    .cards .tooltip {
+      visibility: hidden;
+      width: 120px;
+      font-family: Verdana, sans-serif;
+      font-size: 12px;
+      background-color: #555;
+      color: #fff;
+      text-align: center;
+      padding: 5px 0;
+
+      position: absolute;
+      z-index: 1;
+      top: 100%; 
+      left: 50%;
+      margin-left: -60px; 
+
+      opacity: 0;
+      transition: opacity 0.3s;
+    }
+
+    .cards div:hover .tooltip {
+      visibility: visible;
+      opacity: 1;
+    }
+
+    .selected {
+      filter: grayscale(100%);
+    }
+
+    .selected img:hover {
+      transform:none;
+    }
+
+    .cards div.selected .tooltip {
+      display: none;
+    }
+
+    #draftableCards img {
+      width: 140px;
+      height: auto;
+    }
+
+    #playersHands {
+      display:flex;
+      justify-content: space-around;
+      border
+    }
+
+    #player1Hand, #player2Hand {
+      justify-content: center;
+    }
+
+    #player1Hand img, #player2Hand img {
+      width:110px;
+      height:auto;
+    }
+
+    #player1Container, #player2Container {
+      flex: 1;
+      width: 45%;
+    }
+
+    #player1Label, #player2Label {
+      font-size: 1.5em;
+      text-align: center;
+    }
+
+    #player1Label {
+      color: cyan;
+    }
+
+    #player2Label {
+      color: darkorange;
+    }
+
+
+
+  </style>
+</head>
+
+<body>
+  <input id="player1Name" type="text" value="Player 1">
+  <input id="player2Name" type="text" value="Player 2">
+  <br><label id='numCardsLabel'>Number of Cards to Draft: </label><input id="numCards" type="number" value="12" min="1" max="12">
+  <br><button id='startDraft' onclick="startDraft()">Start Draft</button>
+
+  <div id='currentPlayerDisplay'></div>
+
+  <section>
+    <div id="draftableCards" class="cards"></div>
+  </section>
+
+  <hr>
+
+  <section id="playersHands">
+
+    <div id="player1Container">
+      <div id="player1Label"></div>
+      <div id="player1Hand" class="cards"></div>
+      <div id="player1Copy"></div>
+    </div>
+
+    <div id="player2Container">  
+      <div id="player2Label"></div>
+      <div id="player2Hand" class="cards"></div>
+      <div id="player2Copy"></div>
+    </div>
+
+  </section>
+
+  <script src="/scripts/snakedraft.js"></script>
+
+</body>
+</html>
